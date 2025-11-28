@@ -7,6 +7,8 @@ Technologies:
 - (Alertmanager?)
 - UI?
 
+
+Documentation:
 - Architecture Picture
 - Build Image beforehand
 - Add compose/build commands
