@@ -1,0 +1,68 @@
+{
+  "title": "Industrial Observability Demo",
+  "schemaVersion": 38,
+  "version": 1,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Sensor Values",
+      "targets": [
+        {
+          "expr": "sensor_value",
+          "legendFormat": "{{sensor_id}}"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Sensor Status",
+      "targets": [
+        {
+          "expr": "sensor_status",
+          "legendFormat": "{{sensor_id}}"
+        }
+      ],
+      "options": {
+        "reduceOptions": { "calcs": ["last"] },
+        "colorMode": "value",
+        "mappings": [
+          { "value": 0, "text": "OK" },
+          { "value": 1, "text": "WARN" },
+          { "value": 2, "text": "FAIL" }
+        ]
+      },
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Ingest Latency (p95)",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(sensor_ingest_latency_seconds_bucket[1m])) by (le))"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Ingest Requests / sec",
+      "targets": [
+        {
+          "expr": "sum(rate(sensor_ingest_requests_total[1m]))"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Worker Forward Failures",
+      "targets": [
+        {
+          "expr": "sensor_forward_failures_total"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 16, "w": 12, "h": 6 }
+    }
+  ]
+}

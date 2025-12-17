@@ -23,6 +23,10 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
     ports:
       - "3000:3000"
+    volumes:
+      - ./grafana/dashboard.yml:/etc/grafana/provisioning
+      - ./grafana/data_source.yml:/etc/grafana/provisioning
+      - ./grafana/sensor_dashboard.json:/var/lib/grafana/dashboards
     networks:
       - observability
     depends_on:
