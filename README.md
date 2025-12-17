@@ -1,13 +1,18 @@
 # PVL_ObservabilityStack
+### Project Overview
 
-Technologies:
+This project is part of a Modern Software course. The goal of the application is to collect sensor data from three different machines, ingest the data through an API, and process it using containerized services.
+
+Currently, sensor data is sent manually using curl commands. The system is designed to be modular, scalable, and easy to deploy using Docker Compose.
+
+## Technologies:
 - App (api + worker)
 - Prometheus
 - Grafana
 - UI
 
 
-Documentation:
+## Documentation:
 - Architecture Picture
 - (Build Image beforehand)
 - Add compose/build commands
