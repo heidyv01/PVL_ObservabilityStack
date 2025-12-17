@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Industrial Sensor Input UI</title>
+</head>
+<body>
+<h1>Send Sensor Events</h1>
+
+<form id="sensorForm">
+  <label for="sensor_id">Machine:</label>
+  <select name="sensor_id" id="sensor_id">
+    <option value="machine-1">Machine 1</option>
+    <option value="machine-2">Machine 2</option>
+    <option value="machine-3">Machine 3</option>
+  </select><br>
+
+  <label for="value">Value:</label>
+  <input type="number" step="any" name="value" id="value" value="75.0"><br>
+
+  <label for="status">Status:</label>
+  <select name="status" id="status">
+    <option value="OK">OK</option>
+    <option value="WARN">WARN</option>
+    <option value="FAIL">FAIL</option>
+  </select><br>
+
+  <button type="submit">Send Event</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+document.getElementById('sensorForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const sensor_id = document.getElementById('sensor_id').value;
+    const value = parseFloat(document.getElementById('value').value);
+    const status = document.getElementById('status').value;
+
+    const payload = { sensor_id, value, status };
+
+    try {
+        const res = await fetch('http://localhost:8000/ingest', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        document.getElementById('result').textContent = JSON.stringify(data);
+    } catch (err) {
+        document.getElementById('result').textContent = 'Error: ' + err;
+    }
+});
+</script>
+</body>
+</html>

@@ -49,6 +49,15 @@ services:
       - "8001:8001"
     networks:
       - observability
+  ui:
+    build: ./ui
+    container_name: sensor-ui
+    ports:
+      - "8081:80"
+    networks:
+      - observability
+    depends_on:
+      - api
 
 networks:
   observability:
