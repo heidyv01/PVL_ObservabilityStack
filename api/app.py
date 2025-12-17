@@ -8,13 +8,6 @@ from prometheus_client import Counter, Gauge, Histogram, generate_latest, CONTEN
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-logging.basicConfig(level=logging.INFO)
-@app.before_request
-def log_request_info():
-    logging.info(f"Incoming request: {request.method} {request.url}")
-    logging.info(f"Headers: {dict(request.headers)}")
-    logging.info(f"Body: {request.get_data()}")
-
 worker_url = os.environ.get("WORKER_URL", "http://worker:8001/enqueue")
 
 # define prometheus metrics
@@ -33,7 +26,7 @@ def metrics():
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 # sensor endpoint
-@app.route('/sensor', methods=['POST'])
+@app.route('/ingest', methods=['POST'])
 def ingest():
     start = time.time()
     try:
