@@ -31,9 +31,15 @@ def ingest():
     start = time.time()
     try:
         payload = request.get_json(force=True)
+        if not payload:
+            raise ValueError("Empty JSON payload")
+
         sensor_id = payload['sensor_id']
         value = float(payload['value'])
         status = payload.get('status', 'OK').upper()
+        if status not in status_map:
+            raise ValueError("Invalid status value")
+        
     except Exception as e:
         ingest_requests.labels(status='bad_request').inc()
         return jsonify({"error": "Invalid payload", "details": str(e)}), 400

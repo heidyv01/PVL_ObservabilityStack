@@ -22,5 +22,6 @@ docker-compose up --build
 
 ``` 
 # Curl commands
-curl -X POST http://localhost:8000/ingest -H "Content-Type: application/json" -d '{"sensor_id":"sensor-1","value":42,"status":"OK"}'
+curl -X POST http://localhost:8000/ingest -H "Content-Type: application/json" -d "{\"sensor_id\":\"sensor-1\",\"value\":42,\"status\":\"OK\"}"
+
 ```
