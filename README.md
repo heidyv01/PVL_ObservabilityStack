@@ -13,6 +13,7 @@ The system consists of the following main components:
 - API Service – Receives sensor data via HTTP requests
 - Worker Service – Processes incoming data asynchronously
 - Docker Compose – Orchestrates all services
+![](/images/PVL_Diagramm.JPG)
 
 ## Technologies:
 - App (api + worker)
