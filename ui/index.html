@@ -225,7 +225,7 @@
     <header>
       <div>
         <h1>Send Sensor Events</h1>
-        <div class="sub">Wähle Maschine, Messwert und Status. Die API-Antwort wird formatiert ausgegeben.</div>
+        <div class="sub">Please select the maschine, value and the status.</div>
       </div>
       <div class="status-pill" title="UI-Status">
         <span class="dot" id="uiDot"></span>
@@ -372,7 +372,7 @@
 
         setUiState('Network error', 'fail');
         setBadge('Network / CORS error', 'fail');
-        resultPre.textContent = JSON.stringify({ error: String(err), hint: 'Falls im Browser: prüfe CORS am Backend (localhost:8000).' }, null, 2);
+        resultPre.textContent = JSON.stringify({ error: String(err), hint: 'check CORS at Backend (localhost:8000).' }, null, 2);
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Event';
