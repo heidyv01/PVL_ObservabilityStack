@@ -124,12 +124,12 @@
                   "text": "OK"
                 },
                 "1": {
-                  "color": "red",
+                  "color": "orange",
                   "index": 1,
                   "text": "WARN"
                 },
                 "2": {
-                  "color": "orange",
+                  "color": "red",
                   "index": 2,
                   "text": "FAIL"
                 }
@@ -446,5 +446,5 @@
   "timezone": "",
   "title": "Industrial Observability Demo",
   "uid": "e8083bff-758b-4825-b578-8842cee9f797",
-  "version": 1
+  "version": 2
 }
