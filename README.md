@@ -56,9 +56,8 @@ docker-compose up --build
 
 Sensor data is sent using a curl command.
 ``` 
-curl -X POST http://localhost:8000/ingest \
--H "Content-Type: application/json" \
--d '{"sensor_id": "sensor-1", "value": 42}'
+# Curl commands
+curl -X POST http://localhost:8000/ingest -H "Content-Type: application/json" -d "{\"sensor_id\":\"sensor-1\",\"value\":42,\"status\":\"OK\"}"
 
 ```
 Expose the API on localhost
@@ -66,10 +65,4 @@ Expose the API on localhost
 ``` 
 # Start Docker Build
 docker-compose up --build 
-```
-
-``` 
-# Curl commands
-curl -X POST http://localhost:8000/ingest -H "Content-Type: application/json" -d "{\"sensor_id\":\"sensor-1\",\"value\":42,\"status\":\"OK\"}"
-
 ```
