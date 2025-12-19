@@ -13,13 +13,10 @@ The system consists of the following main components:
 - API Service – Receives sensor data via HTTP requests
 - Worker Service – Processes incoming data asynchronously
 - Docker Compose – Orchestrates all services
-![](/images/PVL_Diagramm.JPG)
+
+![](/images/PVL_Diagram_flow.jpeg)
 
 ## Technologies:
-- App (api + worker)
-- Prometheus
-- Grafana
-- UI
 - **App (api + worker)** - Python: Application Logic
 - **Docker & Docker Compose** – Containerization and orchestration
 - **UI** – Possible for the user to interact with the application
@@ -35,7 +32,7 @@ The system consists of the following main components:
 - Add curl/app commands necessary for usage
 
 ## Running the Application
-### Prerequisites
+### Prerequisites (if the user dont use Codespace)
 
 Make sure you have the following installed:
 
